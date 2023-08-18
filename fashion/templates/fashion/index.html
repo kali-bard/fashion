@@ -1,0 +1,130 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Welcome</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbar-fixed/">
+
+
+
+    <!-- CSS -->
+    <link href="{% static 'fashion/carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'fashion/carousel.rtl.css' %}" rel="stylesheet">
+    <link href="{% static 'fashion/bootstrap.min.css' %}" rel="stylesheet">
+
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'fashion/navbar-top-fixed.css' %}" rel="stylesheet">
+</head>
+
+<body class="container">
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'fashion/logo.svg' %}" width="38" height="30" class="d-inline-block align-top"
+                    alt="Bootstrap" loading="lazy">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Contact</a>
+                    </li>
+
+                    
+
+
+                    
+                </ul>
+                <!-- <form class="d-flex" method="POST">
+                    {% csrf_token %}
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                    <input class="btn btn-outline-success" type="submit" value="Search">
+                    
+
+                </form> -->
+            </div>
+        </div>
+    </nav>
+
+
+
+    <main class="container">
+        
+
+
+
+
+
+
+        <div class="row mb-2">
+            {% for outfit in outfits %}
+            <div class="col-md-6 col-lg-3" style="padding-bottom: 25px;">
+                <div class="card">
+                  <img class="card-img-top" src="{{ outfit.image.url }}" alt="Card image cap" style="max-width: 100%; height: auto;">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ outfit.name }}</h5>
+                    <div class="tags mt-2">
+                      <span class="badge badge-primary" style="background-color:#2e4053; padding: 5px;">{{ outfit.category }}</span>
+                    </div>
+                    <p class="card-text" style="padding-top: 12px;">{{ outfit.description }}</p>
+                    <!-- <a href="" class="btn btn-outline-dark">{{ outfit.price }} ETB</a> -->
+                    <button class="btn btn-outline-dark">{{ outfit.price }} ETB</button>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+
+    </main>
+
+
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+          <span class="text-muted">Design by nTek</span>
+        </div>
+      </footer>
+
+    <script src="{% static 'fashion/bootstrap.bundle.min.js' %}"></script>
+
+
+</body>
+
+</html>
